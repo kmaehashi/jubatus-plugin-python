@@ -10,7 +10,7 @@ namespace python {
 class py_word_splitter
     : public jubatus::core::fv_converter::word_splitter {
  public:
-  py_word_splitter(PyObject* ins)
+  explicit py_word_splitter(PyObject* ins)
       : ins_(ins),
         method_(PyString_FromString("split")) {};
 

@@ -11,7 +11,7 @@ namespace python {
 class py_binary_feature
     : public jubatus::core::fv_converter::binary_feature {
  public:
-  py_binary_feature(PyObject* ins)
+  explicit py_binary_feature(PyObject* ins)
       : ins_(ins),
         method_(PyString_FromString("add_feature")) {};
 
