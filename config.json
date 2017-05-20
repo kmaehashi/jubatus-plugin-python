@@ -1,0 +1,45 @@
+{
+
+"method": "AROW",
+
+"parameter":
+{
+    "regularization_weight" : 1.0
+},
+
+"converter":
+{
+  "string_filter_types": {},
+  "string_filter_rules": [],
+  "num_filter_types": {},
+  "num_filter_rules": [],
+  "binary_types": {
+    "extract_length": {
+      "method": "dynamic",
+      "path": "build/src/libpython_bridge.so",
+      "module": "example_module",
+      "class": "BinaryLengthExtractor",
+      "function": "binary_feature"
+    }
+  },
+  "binary_rules": [
+    {"key" : "*", "type" : "extract_length"}
+  ],
+  "string_types": {
+    "split_by_space": {
+      "method": "dynamic",
+      "path": "build/src/libpython_bridge.so",
+      "module": "example_module",
+      "class": "SpaceSplitter",
+      "function": "word_splitter"
+    }
+  },
+  "string_rules": [
+    {"key" : "*", "type" : "split_by_space", "sample_weight": "bin", "global_weight": "bin"}
+  ],
+  "num_types": {},
+  "num_rules": [{"key" : "*", "type" : "num"}]
+
+}
+
+}
