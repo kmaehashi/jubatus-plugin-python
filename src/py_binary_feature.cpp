@@ -51,6 +51,7 @@ void py_binary_feature::add_feature(
       ret_fv.push_back(std::make_pair(std::string(PyString_AsString(f_key)), PyFloat_AsDouble(f_value)));
   }
 
+  Py_DECREF(ret);
 }
 
 extern "C" {

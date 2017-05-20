@@ -46,6 +46,8 @@ void py_word_splitter::split(
 
       ret_boundaries.push_back(std::make_pair(PyInt_AsLong(begin), PyInt_AsLong(length)));
   }
+
+  Py_DECREF(ret);
 }
 
 extern "C" {
