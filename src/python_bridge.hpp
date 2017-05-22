@@ -13,8 +13,8 @@ namespace python {
 
 /**
  * Initializes the Python interpreter.  This function must be called
- * from main thread.  It is safe to call this function for multiple
- * times.
+ * from main thread, before calling ``setup`` or any other CPython-related
+ * things.  It is safe to call this function for multiple times.
  */
 void initialize();
 
