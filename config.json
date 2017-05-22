@@ -17,9 +17,9 @@
     "extract_length": {
       "method": "dynamic",
       "path": "build/src/libpython_bridge.so",
+      "function": "binary_feature",
       "module": "example_module",
-      "class": "BinaryLengthExtractor",
-      "function": "binary_feature"
+      "class": "BinaryLengthExtractor"
     }
   },
   "binary_rules": [
@@ -29,9 +29,9 @@
     "split_by_space": {
       "method": "dynamic",
       "path": "build/src/libpython_bridge.so",
+      "function": "word_splitter",
       "module": "example_module",
-      "class": "SpaceSplitter",
-      "function": "word_splitter"
+      "class": "SpaceSplitter"
     }
   },
   "string_rules": [
