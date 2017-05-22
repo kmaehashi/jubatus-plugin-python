@@ -6,6 +6,7 @@
 #include <utility>
 
 #include <Python.h>
+
 #include "python_bridge.hpp"
 
 namespace jubatus {
@@ -19,11 +20,10 @@ void py_binary_feature::add_feature(
     std::vector<std::pair<std::string, float> >& ret_fv) const {
   scoped_gil lk;
 
-  // Note: value may contain null bytes.
   PyObject* ret = PyObject_CallMethodObjArgs(
       ins_,
       method_,
-      PyString_FromString(key.c_str()),
+      PyString_FromStringAndSize(key.c_str(), key.length()),
       PyString_FromStringAndSize(value.c_str(), value.length()),
       NULL);
 
@@ -43,7 +43,6 @@ void py_binary_feature::add_feature(
       PyObject* f_key = PyTuple_GetItem(bound, 0);
       PyObject* f_value = PyTuple_GetItem(bound, 1);
 
-      // TODO
       // TODO f_key may be unicode instead of str?
       assert(PyString_CheckExact(f_key));
       assert(PyFloat_CheckExact(f_value));
@@ -55,6 +54,7 @@ void py_binary_feature::add_feature(
 }
 
 extern "C" {
+
 jubatus::core::fv_converter::binary_feature* binary_feature(
     std::map <std::string, std::string>& params) {
   initialize();

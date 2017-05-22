@@ -6,6 +6,7 @@
 #include <utility>
 
 #include <Python.h>
+
 #include "python_bridge.hpp"
 
 namespace jubatus {
@@ -21,7 +22,7 @@ void py_word_splitter::split(
   PyObject* ret = PyObject_CallMethodObjArgs(
       ins_,
       method_,
-      PyString_FromString(text.c_str()),
+      PyString_FromStringAndSize(text.c_str(), text.length()),
       NULL);
 
   // TODO raise instead of assert
