@@ -17,7 +17,7 @@ void py_binary_feature::add_feature(
     const std::string& key,
     const std::string& value,
     std::vector<std::pair<std::string, float> >& ret_fv) const {
-  USE_PYTHON_RUNTIME;
+  scoped_gil lk;
 
   // Note: value may contain null bytes.
   PyObject* ret = PyObject_CallMethodObjArgs(

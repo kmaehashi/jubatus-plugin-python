@@ -16,7 +16,7 @@ namespace python {
 void py_word_splitter::split(
     const std::string& text,
     std::vector<std::pair<size_t, size_t> >& ret_boundaries) const {
-  USE_PYTHON_RUNTIME;
+  scoped_gil lk;
 
   PyObject* ret = PyObject_CallMethodObjArgs(
       ins_,
