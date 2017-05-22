@@ -1,6 +1,11 @@
 # -*- coding: utf-8 -*-
 
 class SpaceSplitter(object):
+    @classmethod
+    def create(cls, param):
+        print("SpaceSplitter: {0}".format(param))
+        return cls()
+
     def split(self, text):
         # split text with space
 
@@ -21,9 +26,14 @@ class SpaceSplitter(object):
         return result
 
 class BinaryLengthExtractor(object):
+    @classmethod
+    def create(cls, param):
+        print("BinaryLengthExtractor: {0}".format(param))
+        return cls()
+
     def extract(self, key, value):
         return [("length_{0}".format(key), float(len(value)))]
 
 # TODO write unit test
-assert SpaceSplitter().split(" hello  jubatus !") == [ (1, 5), (8, 7), (16, 1) ]
-assert BinaryLengthExtractor().extract("data", "test") == [ ("length_data", 4) ]
+assert SpaceSplitter.create(None).split(" hello  jubatus !") == [ (1, 5), (8, 7), (16, 1) ]
+assert BinaryLengthExtractor.create(None).extract("data", "test") == [ ("length_data", 4) ]
